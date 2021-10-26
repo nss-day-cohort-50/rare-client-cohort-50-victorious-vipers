@@ -1,34 +1,51 @@
-import React from "react"
+import React, { useContext, useRef } from "react"
+import { useHistory } from "react-router"
+import { PostContext } from "./PostProvider"
 export const CreatePost = () =>{
-
-
+    const {createPost} = useContext(PostContext)
+    const title = useRef()
+    const content = useRef()
+    const date = Date.now()
+    const history = useHistory()
+    const buildObject = () => {
+        return {
+                "user_id" : parseInt(localStorage.getItem("rare_user_id")),
+                "category_id" : 1,
+                "publication_date": date,
+                "title" : title.current.value,
+                "content" : content.current.value 
+        }
+    }
     return(
-        <form className="form--login" onSubmit={}>
-                <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
+        <form className="" >
+                <h1 className="h3 mb-3 font-weight-normal">New Post</h1>
                 <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input ref={} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
+                    <label htmlFor="title"> Title </label>
+                    <input  type="text" name="title" ref={title} className="form-control" placeholder="Title" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input ref={} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                    <label htmlFor="iamgeurl"> Image URL </label>
+                    <input type="text" name="iamgeurl" className="form-control" placeholder="URL" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
-                    <input ref={} type="email" name="email" className="form-control" placeholder="Email address" required />
+                    <label htmlFor="article"> Article Content  </label>
+                    <textarea rows="10" ref={content}cols="20"name="article" className="form-control" placeholder="Article Content" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
-                    <input ref={} type="password" name="password" className="form-control" placeholder="Password" required />
+                    <select>
+                        <option>Select a Category</option>
+                    </select>
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
-                    <input ref={} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
+                    <input type="checkbox"/>Tag
                 </fieldset>
                 <fieldset style={{
                     textAlign: "center"
                 }}>
-                    <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
+                    <button className="btn btn-1  " type="submit" onClick={() => {
+                        createPost(buildObject()).then( history.push("/mypost"))
+                    }
+                    }>Submit</button>
                 </fieldset>
             </form>
     )
