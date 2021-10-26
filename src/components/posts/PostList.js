@@ -1,19 +1,23 @@
 import React, { useContext, useEffect } from "react"
 import { PostContext } from "./PostProvider"
 import "./post.css"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import DeleteIcon from "@material-ui/icons/Delete"
 import SettingsIcon from "@material-ui/icons/Settings"
 import AddIcon from '@material-ui/icons/Add';
 export const MyPostList = () => {
-    const {myPost, fetchMyPost} = useContext(PostContext)
+    const {myPost, fetchMyPost, deletePost} = useContext(PostContext)
+    const history = useHistory()
     useEffect(()=>{
         fetchMyPost()
     },[])
+
     return <><div className="add-post">
                 <h4>Add Post</h4>
                 <span>
-                <AddIcon fontSize="large"/>
+                <Link to="/createpost">
+                    <AddIcon fontSize="large"/>
+                </Link>
                 </span>
             </div>
     {myPost?.map((post)=>{
@@ -31,10 +35,12 @@ export const MyPostList = () => {
                     <div className="post-icons">
                         <p>number</p>
                         <span>
-                            <Link><SettingsIcon/></Link>
+                            <Link to={`/editpost/${post.id}`}><SettingsIcon/></Link>
                         </span>
                         <span>
-                            <Link><DeleteIcon/></Link>
+                            <Link onClick={()=>{
+                                deletePost(post.id).then(()=>fetchMyPost())
+                            }}><DeleteIcon/></Link>
                         </span>
                         <button >Comment</button>
                     </div>
