@@ -19,9 +19,11 @@ export const CommentList = () => {
             <h1>Comments</h1>
                 <div>
                     {
-                        comments.map((comment) => <div> {comment.content}
-
-                        </div>
+                        comments.map((comment) => {
+                        return (
+                        <>
+                            <div>{comment.content}</div><button>Delete</button>
+                        </>)}
 
                         )
                     }
