@@ -3,6 +3,8 @@ import { Route } from "react-router-dom"
 import { CreatePost } from "./posts/CreatePost"
 import { MyPostList } from "./posts/PostList"
 import { PostProvider } from "./posts/PostProvider"
+import { TagList } from "./tags/tagList"
+
 import { EditPost } from "./posts/EditPost"
 export const ApplicationViews = () => {
     return <>
@@ -24,6 +26,10 @@ export const ApplicationViews = () => {
                     <EditPost />
                 </Route>
         </PostProvider>
+        <Route path="/tagManagement">
+            <TagList/>
+        </Route>
+        
         </main>
         
     </>
