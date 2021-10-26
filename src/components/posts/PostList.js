@@ -36,6 +36,7 @@ export const MyPostList = () => {
                         <span>
                             <Link><DeleteIcon/></Link>
                         </span>
+                        <button >Comment</button>
                     </div>
                 </div>
             </div>
