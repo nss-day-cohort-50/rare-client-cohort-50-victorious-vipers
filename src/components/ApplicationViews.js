@@ -17,6 +17,9 @@ export const ApplicationViews = () => {
                     <MyPostList />
                 </Route>
         </PostProvider>
+        <Route path="/tagManagement">
+            <tagList/>
+        </Route>
         
         
     </>
