@@ -14,6 +14,16 @@ export const CommentList = () => {
         reRender()
     } , [])
 
+    const deleteListItem = (id) => {
+        
+            return fetch(`http://localhost:8088/comments/${id}`, {
+                method: "DELETE"
+            }) 
+            .then(() => {
+                reRender()
+            })
+        }
+
     return(
         <>
             <h1>Comments</h1>
@@ -22,7 +32,7 @@ export const CommentList = () => {
                         comments.map((comment) => {
                         return (
                         <>
-                            <div>{comment.content}</div><button>Delete</button>
+                            <div>{comment.content}</div><button onClick={() => deleteListItem(comment.id)}>Delete</button>
                         </>)}
 
                         )
