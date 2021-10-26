@@ -7,12 +7,12 @@ export const PostProvider = (props) => {
     const currentUser = parseInt(localStorage.getItem("rare_user_id"))
     const [myPost, setMyPost] = useState([])
 
-    const fetchMyPost = (id) =>{
-        return fetch(`${api}/post?user_id=${currentUser}`)
+    const fetchMyPost = () => {
+        return fetch(`${api}/posts?user_id=${currentUser}`)
             .then(res => res.json())
             .then((data) => {
                 setMyPost(data)
             })
     }
-    return <PostContext.provider value={fetchMyPost, myPost}>{props.children}</PostContext.provider>
+    return (<PostContext.Provider value={{fetchMyPost, myPost}}>{props.children}</PostContext.Provider>)
 }
