@@ -1,0 +1,19 @@
+.tag-title{
+    text-align: center;
+}
+.tag-group{
+    display: flex;
+    
+    border: 2px black solid;
+    width: 200px;
+    margin-bottom:15px ;
+    align-items: center;
+}
+.tag{
+    display: flex;
+    justify-content: center;
+}
+
+.tag-edit-delete{
+    margin-right: 12px;
+}
