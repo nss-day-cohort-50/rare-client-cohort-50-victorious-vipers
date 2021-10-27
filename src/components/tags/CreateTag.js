@@ -23,7 +23,9 @@ const CreateTag = () => {
             },
             body: JSON.stringify(newTag)
         }
-        return fetch("http://localhost:8088/tags", fetchOption)
+        return fetch("http://localhost:8088/tags", fetchOption).then(()=>{
+            tag.label = ''
+        })
 
     }
     return (
@@ -32,7 +34,7 @@ const CreateTag = () => {
                 <form class="tag-form-group">
                     <h2>Create a Tag</h2>
                     {/* <label htmlFor="description">title</label> */}
-                    <input type="text" name="title" className="form-control" placeholder=" Tag Title" required autoFocus
+                    <input type="text" value={tag.label} name="title" className="form-control" placeholder=" Tag Title" required autoFocus
                         onChange={
                             (event) => {
                                 const copy = { ...tag }
