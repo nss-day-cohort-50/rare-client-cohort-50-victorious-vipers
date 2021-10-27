@@ -34,7 +34,7 @@ export const CommentList = ({postId}) => {
                         return (
                         <>
                             
-                            <div>{comment.post.content}</div>
+                            <div>{comment.user.username}</div>
                             <div>{comment.content}</div><button onClick={() => deleteListItem(comment.id)}>Delete</button>
                         </>)}
 
