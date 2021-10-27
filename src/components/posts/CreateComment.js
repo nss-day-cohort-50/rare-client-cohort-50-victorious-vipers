@@ -8,6 +8,7 @@ export const CreateComment = () => {
     const {postId} = useParams()
 
     const reRender = () => {
+       
         return fetch(`http://localhost:8088/comments?post_id=${postId}`)
             .then(res => res.json())
             .then((data) => {
@@ -21,7 +22,7 @@ export const CreateComment = () => {
     const postComment = () => {
         
         const commentObject = {
-            postId: postId,
+            post_id: postId,
             author_id: parseInt(localStorage.getItem("rare_user_id")),
             content: comment,
             created_on: Date.now()
@@ -36,7 +37,7 @@ export const CreateComment = () => {
         }
         
         return fetch("http://localhost:8088/comments", fetchOption)
-            .then(() => history.push("/comments/:postId(\d+)"))
+            .then(() => reRender())
 
 }
     return (
@@ -49,7 +50,7 @@ export const CreateComment = () => {
         }
     )}
 
-    <form>
+    
         <fieldset>
             <label htmlFor="content"></label>
             <input onChange = {(event) => setComment(event.target.value)}
@@ -60,7 +61,7 @@ export const CreateComment = () => {
                 }}>
             <button className="btn btn-1 btn-sep icon-send" type="submit" onClick={() => postComment()}>Submit comment</button>
         </fieldset>
-    </form>
+    
     <div>{<CommentList postId={postId}/>}</div>
     </>
     )

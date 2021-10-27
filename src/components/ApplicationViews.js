@@ -22,7 +22,7 @@ export const ApplicationViews = () => {
                     <MyPostList />
                 </Route>
                 
-                <Route path ="/comments/:postId(\d+)">
+                <Route exact path ="/comments/:postId(\d+)">
                     <CreateComment />
                 </Route>
                 <Route path="/createpost">
