@@ -6,6 +6,7 @@ import { PostProvider } from "./posts/PostProvider"
 import { TagList } from "./tags/tagList"
 
 import { EditPost } from "./posts/EditPost"
+
 export const ApplicationViews = () => {
     return <>
 
@@ -28,6 +29,7 @@ export const ApplicationViews = () => {
         </PostProvider>
         <Route path="/tagManagement">
             <TagList/>
+            
         </Route>
         
         </main>
