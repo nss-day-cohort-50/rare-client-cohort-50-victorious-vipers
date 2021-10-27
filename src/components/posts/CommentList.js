@@ -30,8 +30,10 @@ export const CommentList = ({postId}) => {
                 <div>
                     {
                         comments.map((comment) => {
+                            console.log(comment)
                         return (
                         <>
+                            
                             <div>{comment.post.content}</div>
                             <div>{comment.content}</div><button onClick={() => deleteListItem(comment.id)}>Delete</button>
                         </>)}
