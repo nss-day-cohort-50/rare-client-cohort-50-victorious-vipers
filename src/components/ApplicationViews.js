@@ -9,6 +9,7 @@ import { CategoryProvider } from "./categories/CategoryProvider"
 import { TagList } from "./tags/tagList"
 import { EditPost } from "./posts/EditPost"
 import { EditCategory } from "./categories/EditCategory"
+
 export const ApplicationViews = () => {
     return <>
 
@@ -31,6 +32,7 @@ export const ApplicationViews = () => {
         </PostProvider>
         <Route path="/tagManagement">
             <TagList/>
+            
         </Route>
         <CategoryProvider>
         <Route exact path ="/mycategory">
