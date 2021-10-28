@@ -42,7 +42,7 @@ export const MyPostList = () => {
                                 deletePost(post.id).then(()=>fetchMyPost())
                             }}><DeleteIcon/></Link>
                         </span>
-                        <button >Comment</button>
+                        <button onClick= {() => history.push(`/comments/${post.id}`)}>Comment</button>
                     </div>
                 </div>
             </div>
