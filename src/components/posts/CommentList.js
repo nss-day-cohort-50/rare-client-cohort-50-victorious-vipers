@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import "./comment.css"
 
 export const CommentList = ({postId, comments, reRender}) => {
     
@@ -19,20 +20,24 @@ export const CommentList = ({postId, comments, reRender}) => {
 
     return(
         <>
-            <h1>Comments</h1>
-                <div>
+            <div className="commentOutside">
+                
+                    <div className = "commentInside"> 
                     {
                         comments?.map((comment) => {
                            
                         return (
                         <>
-                            
-                            <div>{comment.user.username}</div>
-                            <div>{comment.content}</div><button onClick={() => deleteListItem(comment.id)}>Delete</button>
+                            <div className="individualComment">
+                                <div>{comment.content}</div>
+                                <div>{comment.user.username}</div>
+                                <button onClick={() => deleteListItem(comment.id)}>Delete</button>
+                            </div>
                         </>)}
 
                         )
                     }
+                    </div>
                 </div>
         </>
     )

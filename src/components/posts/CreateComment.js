@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useHistory, useParams } from "react-router";
 import { CommentList } from "./CommentList";
+import "./comment.css"
+
 export const CreateComment = () => {
     const [comment, setComment] = useState("")
     const[postComments, setPostComments] = useState([])
@@ -46,7 +48,7 @@ export const CreateComment = () => {
 }
     return (
     <>
-    <h1>{bull?.post?.title}</h1>
+    <h1 className ="postTitle">{bull?.post?.title}</h1>
     
         <fieldset>
             <label htmlFor="content"></label>
