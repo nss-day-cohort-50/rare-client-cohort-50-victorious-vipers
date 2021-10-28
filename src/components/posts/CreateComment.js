@@ -6,6 +6,7 @@ export const CreateComment = () => {
     const[postComments, setPostComments] = useState([])
     const history = useHistory()
     const {postId} = useParams()
+    const[bull, setBull] = useState({})
 
     const reRender = () => {
        
@@ -13,6 +14,7 @@ export const CreateComment = () => {
             .then(res => res.json())
             .then((data) => {
                 setPostComments(data)
+                setBull(data[0])
             })
     }
     useEffect (() => { 
@@ -28,6 +30,8 @@ export const CreateComment = () => {
             created_on: Date.now()
         }
         
+        setComment('')
+
         const fetchOption = {
             method: "POST",
             headers: {
@@ -37,24 +41,20 @@ export const CreateComment = () => {
         }
         
         return fetch("http://localhost:8088/comments", fetchOption)
-            .then(() => reRender())
+            .then(reRender)
 
 }
     return (
     <>
-    {postComments.map(
-        (postTitle) => {
-            return(
-                <h1>{postTitle.post.title}</h1>
-            )
-        }
-    )}
+    <h1>{bull.post?.title}</h1>
+    
+{/* <h1>{postComments[1].post?.title}</h1> */}
 
     
         <fieldset>
             <label htmlFor="content"></label>
             <input onChange = {(event) => setComment(event.target.value)}
-            type="text" name="firstName" className="form-control" placeholder="Type your comment here" required autoFocus />
+            type="text" name="firstName" className="form-control" placeholder="Type your comment here" value = {comment} required autoFocus />
         </fieldset>
         <fieldset style={{
                     textAlign: "center"
@@ -62,7 +62,7 @@ export const CreateComment = () => {
             <button className="btn btn-1 btn-sep icon-send" type="submit" onClick={() => postComment()}>Submit comment</button>
         </fieldset>
     
-    <div>{<CommentList postId={postId}/>}</div>
+    <div>{<CommentList postId={postId} comments = {postComments} reRender = {reRender}/>}</div>
     </>
     )
 }

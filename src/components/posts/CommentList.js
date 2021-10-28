@@ -1,15 +1,8 @@
 import React, {useState, useEffect} from "react";
 
-export const CommentList = ({postId}) => {
-    const [comments, setComments] = useState([])
-
-    const reRender = () => {
-        return fetch(`http://localhost:8088/comments?post_id=${postId}`)
-            .then(res => res.json())
-            .then((data) => {
-                setComments(data)
-            })
-    }
+export const CommentList = ({postId, comments, reRender}) => {
+    
+   
     useEffect (() => {
         reRender()
     } , [])
@@ -30,7 +23,7 @@ export const CommentList = ({postId}) => {
                 <div>
                     {
                         comments.map((comment) => {
-                            console.log(comment)
+                           
                         return (
                         <>
                             
