@@ -1,5 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { CreateComment } from "./posts/CreateComment"
 import { CreatePost } from "./posts/CreatePost"
 import { MyPostList } from "./posts/PostList"
 import { PostProvider } from "./posts/PostProvider"
@@ -19,6 +20,10 @@ export const ApplicationViews = () => {
         <PostProvider>
                 <Route exact path ="/mypost">
                     <MyPostList />
+                </Route>
+                
+                <Route exact path ="/comments/:postId(\d+)">
+                    <CreateComment />
                 </Route>
                 <Route path="/createpost">
                     <CreatePost />

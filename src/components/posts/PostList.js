@@ -42,6 +42,7 @@ export const MyPostList = () => {
                                 deletePost(post.id).then(()=>fetchMyPost())
                             }}><DeleteIcon/></Link>
                         </span>
+                        <button >Comment</button>
                     </div>
                 </div>
             </div>
