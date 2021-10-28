@@ -22,7 +22,7 @@ export const CommentList = ({postId, comments, reRender}) => {
             <h1>Comments</h1>
                 <div>
                     {
-                        comments.map((comment) => {
+                        comments?.map((comment) => {
                            
                         return (
                         <>

@@ -46,7 +46,7 @@ export const CreateComment = () => {
 }
     return (
     <>
-    <h1>{bull.post?.title}</h1>
+    <h1>{bull?.post?.title}</h1>
     
 {/* <h1>{postComments[1].post?.title}</h1> */}
 
