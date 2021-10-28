@@ -1,14 +1,12 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { CreatePost } from "./posts/CreatePost"
-import { CreateCategory } from "./categories/CreateCategory"
+// import { CreateCategory } from "./categories/CreateCategory"
 import { MyPostList } from "./posts/PostList"
-import { MyCategoryList } from "./categories/CategoryList"
 import { PostProvider } from "./posts/PostProvider"
-import { CategoryProvider } from "./categories/CategoryProvider"
 import { TagList } from "./tags/tagList"
 import { EditPost } from "./posts/EditPost"
-import { EditCategory } from "./categories/EditCategory"
+import { CategoryManager } from "./categories/CreateCategory"
 
 export const ApplicationViews = () => {
     return <>
@@ -34,17 +32,11 @@ export const ApplicationViews = () => {
             <TagList/>
             
         </Route>
-        <CategoryProvider>
-        <Route exact path ="/mycategory">
-                    <MyCategoryList />
+        <CategoryManager>
+                <Route path="/categories">
+                    
                 </Route>
-                <Route path="/createcategory">
-                    <CreateCategory />
-                </Route>
-                <Route path="/editcategory/:categoryId(\d+)">
-                    <EditCategory />
-                </Route>
-        </CategoryProvider>
+        </CategoryManager>
         
         </main>
         
