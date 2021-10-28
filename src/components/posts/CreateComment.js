@@ -48,9 +48,6 @@ export const CreateComment = () => {
     <>
     <h1>{bull?.post?.title}</h1>
     
-{/* <h1>{postComments[1].post?.title}</h1> */}
-
-    
         <fieldset>
             <label htmlFor="content"></label>
             <input onChange = {(event) => setComment(event.target.value)}
