@@ -50,7 +50,7 @@ export const CreateComment = () => {
     
         <fieldset>
             <label htmlFor="content"></label>
-            <input onChange = {(event) => setComment(event.target.value)}
+            <textarea onChange = {(event) => setComment(event.target.value)}
             type="text" name="firstName" className="form-control" placeholder="Type your comment here" value = {comment} required autoFocus />
         </fieldset>
         <fieldset style={{
