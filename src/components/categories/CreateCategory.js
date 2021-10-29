@@ -13,7 +13,10 @@ export const CategoryManager = () => {
     console.log(rend)
 
     useEffect(() => {
-        updateRender() 
+        getCategories()
+        .then(res => res.json())
+        .then(categories => setCategories(categories))
+        
     }, [, rend]
     )
 
