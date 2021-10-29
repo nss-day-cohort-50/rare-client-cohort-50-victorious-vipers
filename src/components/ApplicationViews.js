@@ -5,7 +5,7 @@ import { CreatePost } from "./posts/CreatePost"
 import { MyPostList } from "./posts/PostList"
 import { PostProvider } from "./posts/PostProvider"
 import { TagList } from "./tags/tagList"
-
+import { EditTag } from "./tags/EditTag"
 import { EditPost } from "./posts/EditPost"
 
 export const ApplicationViews = () => {
@@ -34,6 +34,10 @@ export const ApplicationViews = () => {
         </PostProvider>
         <Route path="/tagManagement">
             <TagList/>
+            
+        </Route>
+        <Route path="/editTag/:tagId(\d+)">
+            <EditTag/>
             
         </Route>
         

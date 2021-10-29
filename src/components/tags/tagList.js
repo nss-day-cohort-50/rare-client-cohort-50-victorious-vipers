@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react";
 import './tag.css'
 import CreateTag from "./CreateTag"
+import { useHistory, Link } from "react-router-dom";
 
 export const TagList = () => {
 
     const [tags, changeTag] = useState([])
-
+const history = useHistory
     // useEffect(
     //     () => {
     //         fetch("http://localhost:8088/tags")
@@ -47,7 +48,7 @@ export const TagList = () => {
                                 return <div className='tag' key={`tag--${tag.id}`}>
                                     <div className="tag-group">
                                         <div className='tag-edit-delete'>
-                                            <button>edit</button>
+                                           <Link to ={`/editTag/${tag.id}`}> <button >edit</button></Link>
                                             <button onClick={() => {
                                                 deleteTag(tag.id)
                                                 
