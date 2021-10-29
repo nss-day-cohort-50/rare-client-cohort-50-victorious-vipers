@@ -7,15 +7,15 @@ export const TagList = () => {
 
     const [tags, changeTag] = useState([])
 
-    useEffect(
-        () => {
-            fetch("http://localhost:8088/tags")
-                .then(res => res.json())
-                .then((ListArray) => {
-                    changeTag(ListArray)
-                })
-        }, []
-    )
+    // useEffect(
+    //     () => {
+    //         fetch("http://localhost:8088/tags")
+    //             .then(res => res.json())
+    //             .then((ListArray) => {
+    //                 changeTag(ListArray)
+    //             })
+    //     }, []
+    // )
     const reRender = () => {
 
         return fetch("http://localhost:8088/tags")
@@ -60,7 +60,8 @@ export const TagList = () => {
                             }
                         )
                     }</div>
-                <CreateTag />
+                <CreateTag reRender={reRender} />
+                
             </div>
 
 

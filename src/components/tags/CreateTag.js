@@ -1,29 +1,17 @@
 import React, { useState, useEffect } from "react"
+import { TagList } from "./tagList"
 
 
 
-const CreateTag = () => {
+const CreateTag = ({reRender}) => {
     const [tag, changeTag] = useState({
         label: ''
     })
-    const [tags, setTag] = useState([])
-
-    const reRender = () => {
-
-        return fetch("http://localhost:8088/tags")
-            .then(res => res.json())
-            .then((ListArray) => {
-                setTag(ListArray)
-
-            })
-    }
-    useEffect(() => {
-        reRender()
-    }, [])
-
-    console.log(tags)
     
-    const savePost = (event) => {
+ 
+
+    const saveTag = (event) => {
+        
         event.preventDefault()
         const newTag = {
             label: tag.label
@@ -37,7 +25,9 @@ const CreateTag = () => {
             body: JSON.stringify(newTag)
         }
 
-        return fetch("http://localhost:8088/tags", fetchOption).then(()=>{reRender()})
+        return fetch("http://localhost:8088/tags", fetchOption).then(()=>{
+            tag.label = ""
+        })
 
     }
     return (
@@ -55,7 +45,7 @@ const CreateTag = () => {
                             }
                         } />
 
-                    <button className="form-button" onClick={ savePost}>Create</button>
+                    <button className="form-button" onClick={(e)=>{saveTag(e).then(reRender)}}>Create</button>
                 </form>
             </div>
         </>
