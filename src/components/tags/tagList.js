@@ -14,7 +14,7 @@ export const TagList = () => {
                 .then((ListArray) => {
                     changeTag(ListArray)
                 })
-        }, [tags]
+        }, []
     )
 
 

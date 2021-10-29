@@ -1,0 +1,12 @@
+.postTitle {
+    padding-left: 40%;
+}
+
+.commentOutside {
+    display: flex;
+    margin-left: 35%;
+}
+
+.individualComment {
+    margin-bottom: 15%;
+}
