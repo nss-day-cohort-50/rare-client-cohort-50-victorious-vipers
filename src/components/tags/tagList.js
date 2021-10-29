@@ -14,34 +14,53 @@ export const TagList = () => {
                 .then((ListArray) => {
                     changeTag(ListArray)
                 })
-        }, [tags]
+        }, []
     )
+    const reRender = () => {
 
+        return fetch("http://localhost:8088/tags")
+            .then(res => res.json())
+            .then((ListArray) => {
+                changeTag(ListArray)
 
+            })
+    }
+    useEffect(() => {
+        reRender()
+    }, [])
+
+    const deleteTag = (id) => {
+        fetch(`http://localhost:8088/tags/${id}`, {
+            method: "DELETE"
+        }).then(reRender)
+    }
     return (
         <>
             <div className="tag-manager">
-                
+
                 <div className="tag-list">
-                <h2 className='tag-title'>Tags</h2>
-                {
+                    <h2 className='tag-title'>Tags</h2>
+                    {
 
-                    tags.map(
-                        (tag) => {
-                            return <div className='tag' key={`tag--${tag.id}`}>
-                                <div className="tag-group">
-                                    <div className='tag-edit-delete'>
-                                        <button>edit</button>
-                                        <button>delete</button>
+                        tags.map(
+                            (tag) => {
+                                return <div className='tag' key={`tag--${tag.id}`}>
+                                    <div className="tag-group">
+                                        <div className='tag-edit-delete'>
+                                            <button>edit</button>
+                                            <button onClick={() => {
+                                                deleteTag(tag.id)
+                                                
+                                            }}>delete</button>
+                                        </div>
+                                        <p>{tag.label}</p>
+
                                     </div>
-                                    <p>{tag.label}</p>
-
                                 </div>
-                            </div>
-                        }
-                    )
-                }</div>
-                <CreateTag/>
+                            }
+                        )
+                    }</div>
+                <CreateTag />
             </div>
 
 

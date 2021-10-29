@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 
 
@@ -6,10 +6,23 @@ const CreateTag = () => {
     const [tag, changeTag] = useState({
         label: ''
     })
+    const [tags, setTag] = useState([])
 
+    const reRender = () => {
 
+        return fetch("http://localhost:8088/tags")
+            .then(res => res.json())
+            .then((ListArray) => {
+                setTag(ListArray)
 
+            })
+    }
+    useEffect(() => {
+        reRender()
+    }, [])
 
+    console.log(tags)
+    
     const savePost = (event) => {
         event.preventDefault()
         const newTag = {
@@ -23,9 +36,8 @@ const CreateTag = () => {
             },
             body: JSON.stringify(newTag)
         }
-        return fetch("http://localhost:8088/tags", fetchOption).then(()=>{
-            tag.label = ''
-        })
+
+        return fetch("http://localhost:8088/tags", fetchOption).then(()=>{reRender()})
 
     }
     return (
@@ -42,7 +54,8 @@ const CreateTag = () => {
                                 changeTag(copy)
                             }
                         } />
-                    <button className="form-button" onClick={savePost}>Create</button>
+
+                    <button className="form-button" onClick={ savePost}>Create</button>
                 </form>
             </div>
         </>
