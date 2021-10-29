@@ -19,7 +19,7 @@ export const CategoryManager = () => {
 
     const setCategory = (event) => {
         let copy = {...newCategory }
-        copy.label = event.targe
+        copy.label = event.target.value
         setNewCategory(copy)
     }
 
@@ -51,7 +51,7 @@ export const CategoryManager = () => {
                                     <button className="edit-delete"
                                         onClick={() => { 
                                             editCategory(category)
-                                                .then(updateRender) 
+                                                 
                                         }
                                         }><AddIcon fontSize="large"/></button>
                                     <button className="edit-delete"
